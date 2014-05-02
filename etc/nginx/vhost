@@ -1,0 +1,40 @@
+upstream example.com {
+	server 127.0.0.1:3000;
+}
+
+server {
+	listen 0.0.0.0:80;
+	server_name example.com;
+
+	gzip on;
+	gzip_http_version 1.1;
+	gzip_vary on;
+	gzip_comp_level 6;
+	gzip_proxied any;
+	gzip_types text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript text/x-js;
+	gzip_buffers 16 8k;
+	gzip_disable "MSIE [1-6]\.(?!.*SV1)";
+
+	location ~* ^.+\.(svg|woff|ttf|jpg|jpeg|gif|png|ico|css|zip|tgz|gz|rar|bz2|pdf|txt|tar|wav|bmp|rtf|js|flv|swf|html|htm)$ {
+		root /path/to/static;
+	}
+
+	location / {
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header Host $http_host;
+		proxy_set_header X-NginX-Proxy true;
+
+		proxy_buffers 8 32k;
+		proxy_buffer_size 64k;
+
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "upgrade";
+
+		proxy_pass http://example.com/;
+		proxy_redirect off;
+
+		tcp_nodelay on;
+	}
+}
