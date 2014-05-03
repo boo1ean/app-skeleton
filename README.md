@@ -11,3 +11,11 @@
 - [ ] Client-side error logging `window.onerror`
 
 **Hot alert** - kind of alert developers could response to immediately e.g. email, sms, skype
+
+## Utils
+
+Rename app
+
+```bash
+find . -type f -regex ".*\.\(js\|html\)" -print0 | xargs -0 sed -i '' -e "s/enode/YOUR_BEST_NAME/g"
+```
