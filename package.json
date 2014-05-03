@@ -18,6 +18,7 @@
     "gulp-uglify": "~0.2.1",
     "gulp-uncss": "~0.4.3",
     "gulp-minify-css": "~0.3.1",
-    "cnfg": "~0.1.1"
+    "cnfg": "~0.1.1",
+    "q": "~1.0.1"
   }
 }
