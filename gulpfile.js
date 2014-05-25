@@ -6,7 +6,12 @@ var templateCache = require('gulp-angular-templatecache');
 
 var config = {
 	styles: {
-		src: './front/styles/*.styl',
+		src: [
+			'./front/styles/reset.styl',
+			'./front/styles/main.styl'
+		],
+
+		dist: 'app.css',
 		dest: './static'
 	},
 
@@ -26,6 +31,7 @@ var config = {
 			'./front/app/*.js',
 			'./front/.template-cache/*.js'
 		],
+
 		dist: 'app.js',
 		dest: './static'
 	}
@@ -34,6 +40,7 @@ var config = {
 gulp.task('styles', function() {
 	gulp.src(config.styles.src)
 		.pipe(stylus())
+		.pipe(concat(config.styles.dist))
 		.pipe(gulp.dest(config.styles.dest));
 });
 
