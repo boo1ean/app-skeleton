@@ -1,12 +1,23 @@
+var PrettyError = require('pretty-error');
+var pe = new PrettyError();
+
 var notify = function(level) {
 	return console.log.bind(console, level);
+};
+
+var notify_error = function(level) {
+	return function(error) {
+		console.error(level);
+		var rendered_error = pe.render(error);
+		console.error(rendered_error);
+	};
 };
 
 var log = {
 	/**
 	 * System is unusable.
 	 */
-	emergency: notify('emergency'),
+	emergency: notify_error('emergency'),
 	
 	/**
 	 * Action must be taken immediately.
@@ -14,20 +25,20 @@ var log = {
 	 * Example: Entire website down, database unavailable, etc. This should
 	 * trigger the SMS alerts and wake you up.
 	 */
-	alert: notify('alert'),
+	alert: notify_error('alert'),
 	
 	/**
 	 * Critical conditions.
 	 *
 	 * Example: Application component unavailable, unexpected exception.
 	 */
-	critical: notify('critical'),
+	critical: notify_error('critical'),
 	
 	/**
 	 * Runtime errors that do not require immediate action but should typically
 	 * be logged and monitored.
 	 */
-	error: notify('error'),
+	error: notify_error('error'),
 	
 	/**
 	 * Exceptional occurrences that are not errors.
