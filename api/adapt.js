@@ -6,13 +6,17 @@ var adapter = function(action) {
 		var params = _.extend({}, req.params, req.query, req.body);
 
 		var onFulfilled = function(data) {
+			if (res.headersSent) {
+				return;
+			}
+
 			res.json(data);
 		};
 
 		var onRejected = errorHandler(res);
 
 		try {
-			action(params, req.user, req, res).done(onFulfilled, onRejected);
+			action(params, req, res).done(onFulfilled, onRejected);
 		} catch (error) {
 			onRejected(error);
 		}

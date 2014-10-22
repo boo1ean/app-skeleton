@@ -2,7 +2,8 @@ var gulp = require('gulp');
 var stylus = require('gulp-stylus');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var templateCache = require('gulp-angular-templatecache');
+var template_cache = require('gulp-angular-templatecache');
+var run_sequence = require('run-sequence');
 
 var config = {
 	styles: {
@@ -16,7 +17,7 @@ var config = {
 	},
 
 	templates: {
-		src: './front/templates/*.html',
+		src: './front/modules/**/*.html',
 		dest: './front/.template-cache'
 	},
 
@@ -24,11 +25,21 @@ var config = {
 		src: [
 			'./vendor/lodash/dist/lodash.min.js',
 			'./vendor/jquery/dist/jquery.js',
+
+			'./vendor/jquery/dist/jquery.js',
+			'./vendor/store-js/store.js',
+
 			'./vendor/angular/angular.js',
 			'./front/template-cache/*.js',
 			'./vendor/angular-route/angular-route.js',
-			'./vendor/angular-google-maps/dist/angular-google-maps.js',
-			'./front/app/*.js',
+			'./vendor/angular-resource/angular-resource.js',
+
+			'./front/app.js',
+			'./front/routes.js',
+			'./front/modules/**/*.js',
+			'./front/services/*.js',
+			'./front/resources/*.js',
+
 			'./front/.template-cache/*.js'
 		],
 
@@ -46,7 +57,7 @@ gulp.task('styles', function() {
 
 gulp.task('templates', function() {
 	gulp.src(config.templates.src)
-		.pipe(templateCache())
+		.pipe(template_cache({ module: 'app.templates' }))
 		.pipe(gulp.dest(config.templates.dest));
 });
 
@@ -56,12 +67,12 @@ gulp.task('js', function() {
 		.pipe(gulp.dest(config.js.dest));
 });
 
-gulp.task('build', ['templates', 'js', 'styles']);
+gulp.task('build', function() {
+	run_sequence(['templates', 'styles'], ['js']);
+});
 
-gulp.task('watch', function() {
-	gulp.watch(config.styles.src, ['styles']);
-	gulp.watch(config.templates.src, ['build']);
-	gulp.watch(config.js.src, ['js']);
+gulp.task('watch', ['build'], function() {
+	gulp.watch(['./front/**/*.*'], ['build']);
 });
 
 gulp.task('default', ['watch']);
