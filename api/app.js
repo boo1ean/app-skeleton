@@ -5,7 +5,7 @@ var config = require('../config');
 
 var app = express();
 
-app.use(bodyParser());
+app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../static'));
 
 routes.call(app);

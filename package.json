@@ -11,7 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "bluebird": "^2.2.2",
-    "body-parser": "~1.0.2",
+    "body-parser": "~1.9.1",
     "cnfg": "~0.1.1",
     "express": "~4.9.8",
     "gulp": "~3.6.1",
