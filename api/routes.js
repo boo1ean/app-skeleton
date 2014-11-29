@@ -1,8 +1,4 @@
-var controller = require('app-controller');
-var log = require('../core/framework/log');
-
-// Set app-specific logger
-controller.setLogger(log);
+var controller = require('../core/framework/controller');
 
 var index = controller('./controllers/index');
 
