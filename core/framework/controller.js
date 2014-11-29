@@ -1,3 +1,4 @@
+var controller = require('app-controller');
 var log = require('./log');
 
 // Set app-specific logger
