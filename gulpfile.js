@@ -49,30 +49,30 @@ var config = {
 };
 
 gulp.task('styles', function() {
-	gulp.src(config.styles.src)
+	return gulp.src(config.styles.src)
 		.pipe(stylus())
 		.pipe(concat(config.styles.dist))
 		.pipe(gulp.dest(config.styles.dest));
 });
 
 gulp.task('templates', function() {
-	gulp.src(config.templates.src)
+	return gulp.src(config.templates.src)
 		.pipe(template_cache({ module: 'app.templates' }))
 		.pipe(gulp.dest(config.templates.dest));
 });
 
 gulp.task('js', function() {
-	gulp.src(config.js.src)
+	return gulp.src(config.js.src)
 		.pipe(concat(config.js.dist))
 		.pipe(gulp.dest(config.js.dest));
 });
 
 gulp.task('build', function() {
-	run_sequence(['templates', 'styles'], ['js']);
+	return run_sequence(['templates', 'styles'], ['js']);
 });
 
 gulp.task('watch', ['build'], function() {
-	gulp.watch(['./front/**/*.*'], ['build']);
+	return gulp.watch(['./front/**/*.*'], ['build']);
 });
 
 gulp.task('default', ['watch']);
