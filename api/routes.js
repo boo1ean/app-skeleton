@@ -1,6 +1,10 @@
-var adapt = require('./adapt');
+var controller = require('app-controller');
+var log = require('../core/framework/log');
 
-var index = adapt('./controllers/index');
+// Set app-specific logger
+controller.setLogger(log);
+
+var index = controller('./controllers/index');
 
 module.exports = function () {
 	this.all('*', index.index);

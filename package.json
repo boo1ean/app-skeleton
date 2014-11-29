@@ -10,6 +10,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "app-controller": "^0.2.0",
     "app-log": "^0.1.0",
     "bluebird": "^2.2.2",
     "body-parser": "~1.9.1",
