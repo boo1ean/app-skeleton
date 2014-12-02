@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "app-controller": "^0.2.3",
+    "app-dal": "^0.2.0",
     "app-log": "^0.1.2",
     "app-service": "^0.2.2",
     "bluebird": "^2.2.2",
