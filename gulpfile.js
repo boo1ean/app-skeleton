@@ -2,13 +2,13 @@ var gulp = require('gulp');
 var stylus = require('gulp-stylus');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var plumber = require('gulp-plumber');
 var template_cache = require('gulp-angular-templatecache');
 var run_sequence = require('run-sequence');
 
 var config = {
 	styles: {
 		src: [
-			'./front/styles/reset.styl',
 			'./front/styles/main.styl'
 		],
 
@@ -24,21 +24,20 @@ var config = {
 	js: {
 		src: [
 			'./vendor/lodash/dist/lodash.min.js',
-			'./vendor/jquery/dist/jquery.js',
 
 			'./vendor/jquery/dist/jquery.js',
 			'./vendor/store-js/store.js',
 
 			'./vendor/angular/angular.js',
-			'./front/template-cache/*.js',
 			'./vendor/angular-route/angular-route.js',
 			'./vendor/angular-resource/angular-resource.js',
 
 			'./front/app.js',
 			'./front/routes.js',
 			'./front/modules/**/*.js',
-			'./front/services/*.js',
-			'./front/resources/*.js',
+			'./front/services/**/*.js',
+			'./front/interceptors/**/*.js',
+			'./front/resources/**/*.js',
 
 			'./front/.template-cache/*.js'
 		],
