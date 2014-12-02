@@ -12,6 +12,7 @@
   "dependencies": {
     "app-controller": "^0.2.3",
     "app-log": "^0.1.2",
+    "app-service": "^0.2.2",
     "bluebird": "^2.2.2",
     "body-parser": "~1.9.1",
     "cnfg": "~0.1.1",
