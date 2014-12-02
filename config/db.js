@@ -1,3 +1,5 @@
 module.exports = {
-	uri: 'postgres://root:root@localhost/enode'
+	pg: {
+		connection: 'postgres://root:root@localhost/app'
+	}
 };
