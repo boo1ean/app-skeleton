@@ -7,9 +7,12 @@ server-up:
 server: server-down server-up
 
 db-up:
+	node database/unviews.js
 	knex --cwd database migrate:latest
+	node database/views.js
 
 db-down:
+	node database/unviews.js
 	knex --cwd database migrate:rollback
 
 db-refresh: db-down db-up

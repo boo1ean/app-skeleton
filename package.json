@@ -18,6 +18,7 @@
     "bluebird": "^2.2.2",
     "body-parser": "~1.9.1",
     "cnfg": "~0.1.1",
+    "colors": "^1.0.3",
     "express": "^4.9.8",
     "express-jwt": "^0.5.1",
     "gulp": "~3.6.1",
