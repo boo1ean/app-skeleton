@@ -1,8 +1,12 @@
 var users = require('../../core/users');
 
 var controller = {
-	query: function create () {
+	query: function query () {
 		return users.query();
+	},
+
+	create: function create (params) {
+		return users.create(params);
 	}
 };
 

@@ -4,7 +4,7 @@ function renderError (field, message) {
 
 function clearErrors (root) {
 	root.find('span.error').remove();
-	root.find('.form-item.has-error').removeClass('has-error');
+	root.find('.form-input.has-error').removeClass('has-error');
 }
 
 function showErrors (root, errors) {
@@ -12,7 +12,7 @@ function showErrors (root, errors) {
 
 	for (var field in errors) {
 		var input = root.find('[name="' + field + '"]:not([data-ignore])');
-		var wrapper = input.parents('.form-item');
+		var wrapper = input.parents('.form-input');
 		
 		wrapper.addClass('has-error');
 

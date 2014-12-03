@@ -5,5 +5,6 @@ var users = controller(require('./controllers/users'));
 
 module.exports = function () {
 	this.get('/api/users', users.query);
+	this.post('/api/users', users.create);
 	this.all('*', index.index);
 };

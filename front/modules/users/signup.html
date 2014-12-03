@@ -1,6 +1,8 @@
 <div class="registration">
-	<form>
-		<input type="text" placeholder="name?" ng-model="user.name" />
-		<button>GO</button>
+	<form ng-submit="signup()">
+		<div class="form-input">
+			<input type="text" name="name" placeholder="name?" ng-model="user.name" />
+			<button>GO</button>
+		</div>
 	</form>
 </div>
