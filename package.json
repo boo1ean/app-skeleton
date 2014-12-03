@@ -11,7 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "app-controller": "^0.2.3",
-    "app-dal": "^0.2.1",
+    "app-dal": "^0.2.2",
     "app-log": "^0.1.2",
     "app-service": "^0.2.2",
     "app-validation": "^0.1.1",

@@ -7,4 +7,4 @@ var methods = {
 	}
 };
 
-module.exports = dal({ table: 'posts', knex: knex, methods: methods });
+module.exports = dal({ table: 'posts', viewTable: 'v_posts', knex: knex, methods: methods });
