@@ -6,4 +6,12 @@ server-up:
 
 server: server-down server-up
 
+db-up:
+	knex --cwd database migrate:latest
+
+db-down:
+	knex --cwd database migrate:rollback
+
+db-refresh: db-down db-up
+
 .PHONY: test
