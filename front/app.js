@@ -18,8 +18,7 @@ angular.module('app', ['ngRoute', 'app.services', 'app.resources', 'app.template
 	.run(
 	['$rootScope', '$location', '$http', 'auth', 'config',
 	function($rootScope, $location, $http, auth, config) {
-		$rootScope.isLoggedIn = auth.isAuthenticated();
-		$rootScope.user = auth.getUser();
+		auth.injectIntoScope();
 
 		// Don't show login page for logged in users
 		$rootScope.$on('$locationChangeStart', function (ev, next) {
