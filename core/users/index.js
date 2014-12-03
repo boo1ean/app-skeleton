@@ -1,12 +1,12 @@
 var service = require('../../framework/service');
-var dal = require('./dal');
+var users = require('./dal');
 var validation = require('./validation');
 
 var methods = {
-	query: dal.query,
+	query: users.query,
 
 	create: function create (data) {
-		return dal.create(data).then(dal.find);
+		return users.create(data).then(users.find);
 	}
 };
 

@@ -1,0 +1,16 @@
+<div class="posts">
+	<div class="create-post">
+		<form ng-submit="create()">
+			<div class="form-input">
+				<input type="text" name="body" ng-model="post.body" />
+				<button>say</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="posts-container">
+		<div class="post" ng-repeat="post in posts">
+			{{ post.body }}
+		</div>
+	</div>
+</div>
