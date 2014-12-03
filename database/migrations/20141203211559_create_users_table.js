@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
 		t.dateTime('updated_at').nullable();
 
 		t.text('name').unique().notNull();
+		t.text('color').notNull();
 	});
 };
 
