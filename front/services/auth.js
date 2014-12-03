@@ -1,4 +1,4 @@
-angular.module('app.services').factory('authentication', ['$window', 
+angular.module('app.services').factory('auth', ['$window', 
 	function ($window) {
 		var methods = {
 			isAuthenticated: function () {

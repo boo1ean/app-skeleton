@@ -1,5 +1,6 @@
-angular.module('app.services').factory('errorInterceptor', ['$rootScope', '$timeout', '$q', '$location',
-	function ($rootScope, $timeout, $q, $location) {
+angular.module('app.services').factory('errorInterceptor',
+   ['$rootScope', '$timeout', '$q', '$location', 'config',
+	function ($rootScope, $timeout, $q, $location, config) {
 		return {
 			response: function (response) {
 				if (response.status === 200) {
@@ -12,7 +13,7 @@ angular.module('app.services').factory('errorInterceptor', ['$rootScope', '$time
 			responseError: function (rejection) {
 				if (rejection.status === 401) {
 					$rootScope.isLoggedIn = false;
-					$location.path('/login');
+					$location.path(config.loginPath);
 				} else if (!(_.isObject(rejection.data) && rejection.data.errors)) {
 					$rootScope.hasError = true;
 					$timeout(function () {

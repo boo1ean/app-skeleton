@@ -1,11 +1,12 @@
-angular.module('app.services').factory('authenticationInterceptor', ['$q', '$location', 'authentication', 
-	function ($q, $location, authentication) {
+angular.module('app.services').factory('authInterceptor',
+   ['$q', '$location', 'auth', 'config',
+	function ($q, $location, auth, config) {
 		return {
 			request: function (config) {
 				config.headers = config.headers || {};
 
-				if (authentication.isAuthenticated()) {
-					config.headers.Authorization = authentication.getAuthorizationHeader();
+				if (auth.isAuthenticated()) {
+					config.headers.Authorization = auth.getAuthorizationHeader();
 				}
 
 				return config;
@@ -13,7 +14,7 @@ angular.module('app.services').factory('authenticationInterceptor', ['$q', '$loc
 
 			response: function (response) {
 				if (response.status === 401) {
-					$location.path('/login');
+					$location.path(config.loginPath);
 				}
 
 				return response || $q.when(response);
