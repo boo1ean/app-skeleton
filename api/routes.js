@@ -5,13 +5,13 @@ var users = controller(require('./controllers/users'));
 var posts = controller(require('./controllers/posts'));
 var auth = controller(require('./controllers/auth'));
 
-module.exports = function () {
-	this.post('/register', auth.register);
+module.exports = function configureRoutes (app) {
+	app.post('/register', auth.register);
 
-	this.get('/api/users', users.query);
+	app.get('/api/users', users.query);
 
-	this.get('/api/posts', posts.query);
-	this.post('/api/posts', posts.create);
+	app.get('/api/posts', posts.query);
+	app.post('/api/posts', posts.create);
 
-	this.all('*', index.index);
+	app.all('*', index.index);
 };
