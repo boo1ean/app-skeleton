@@ -6,24 +6,10 @@ angular.module('app.templates', []);
 
 angular.module('app', ['ngRoute', 'app.services', 'app.resources', 'app.templates']).
 	config(
-	['$routeProvider', '$locationProvider', '$httpProvider',
-	function($routeProvider, $locationProvider, $httpProvider) {
+	['$httpProvider',
+	function($httpProvider) {
 		$httpProvider.interceptors.push(
-			'authInterceptor',
 			'validationInterceptor',
 			'errorInterceptor'
 		);
-	}])
-
-	.run(
-	['$rootScope', '$location', '$http', 'auth', 'config',
-	function($rootScope, $location, $http, auth, config) {
-		auth.injectIntoScope();
-
-		// Don't show login page for logged in users
-		$rootScope.$on('$locationChangeStart', function (ev, next) {
-			if (auth.isAuthenticated() && next.indexOf('/r') !== -1) {
-				$location.path('/');
-			}
-		});
 	}]);

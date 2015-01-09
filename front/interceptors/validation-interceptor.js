@@ -1,27 +1,3 @@
-function renderError (field, message) {
-	return '<span class="error text-danger">' + message + '</span>';
-}
-
-function clearErrors (root) {
-	root.find('span.error').remove();
-	root.find('.form-input.has-error').removeClass('has-error');
-}
-
-function showErrors (root, errors) {
-	clearErrors(root);
-
-	for (var field in errors) {
-		var input = root.find('[name="' + field + '"]:not([data-ignore])');
-		var wrapper = input.parents('.form-input');
-		
-		wrapper.addClass('has-error');
-
-		if (!wrapper.hasClass('no-err-msg')) {
-			wrapper.append(renderError(field, errors[field]));
-		}
-	}
-}
-
 angular.module('app.services').factory('validationInterceptor', ['$q', '$document',
 	function ($q, $document) {
 		return {
@@ -43,3 +19,27 @@ angular.module('app.services').factory('validationInterceptor', ['$q', '$documen
 		};
 	}
 ]);
+
+function showErrors (root, errors) {
+	clearErrors(root);
+
+	for (var field in errors) {
+		var input = root.find('[name="' + field + '"]:not([data-ignore])');
+		var wrapper = input.parents('.form-input');
+
+		wrapper.addClass('has-error');
+
+		if (!wrapper.hasClass('no-err-msg')) {
+			wrapper.append(renderError(field, errors[field]));
+		}
+	}
+}
+
+function clearErrors (root) {
+	root.find('span.error').remove();
+	root.find('.form-input.has-error').removeClass('has-error');
+}
+
+function renderError (field, message) {
+	return '<span class="error text-danger">' + message + '</span>';
+}
