@@ -1,6 +1,6 @@
 module.exports = {
 	api: {
-		url: 'http://localhost:3000',
+		url: 'http://staging.com',
 		port: 3000
 	}
 };
