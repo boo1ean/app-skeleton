@@ -49,7 +49,7 @@ var config = {
 
 gulp.task('styles', function() {
 	return gulp.src(config.styles.src)
-		.pipe(stylus())
+		.pipe(stylus({'include css': true}))
 		.pipe(concat(config.styles.dist))
 		.pipe(gulp.dest(config.styles.dest));
 });
