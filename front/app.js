@@ -10,6 +10,7 @@ angular.module('app', ['ngRoute', 'app.services', 'app.resources', 'app.template
 	function($httpProvider) {
 		$httpProvider.interceptors.push(
 			'validationInterceptor',
-			'errorInterceptor'
+			'errorInterceptor',
+			'progressInterceptor'
 		);
 	}]);
