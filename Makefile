@@ -1,10 +1,11 @@
 server-down:
-	cd etc/supervisor; supervisorctl -c supervisord.conf shutdown
+	cd etc/pm2; pm2 stop processes.json
 
 server-up:
-	cd etc/supervisor; supervisord -c supervisord.conf
+	cd etc/pm2; pm2 start processes.json
 
-server: server-down server-up
+server-res:
+	cd etc/pm2; pm2 restart processes.json
 
 db-up:
 	node database/unviews.js
