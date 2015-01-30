@@ -17,7 +17,7 @@ var config = {
 	},
 
 	templates: {
-		src: './front/modules/**/*.html',
+		src: ['./front/modules/**/*.html', './front/directives/**/*.html'],
 		dest: './front/.template-cache'
 	},
 
@@ -34,6 +34,7 @@ var config = {
 
 			'./front/app.js',
 			'./front/routes.js',
+			'./front/directives/**/*.js',
 			'./front/modules/**/*.js',
 			'./front/services/**/*.js',
 			'./front/interceptors/**/*.js',

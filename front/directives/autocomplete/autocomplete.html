@@ -1,0 +1,15 @@
+<ui-select
+	ng-model="selectedItem"
+	theme="bootstrap"
+	on-select="onSelect($item, $model)"
+	reset-search-input>
+
+	<ui-select-match placeholder="{{ placeholder }}">{{ $select.selected.text || $select.selected }}</ui-select-match>
+
+	<ui-select-choices
+		repeat="item in items | filter:$select.search"
+		refresh="refresh($select.search)"
+		refresh-delay="600">
+		{{ item.text || item }}
+	</ui-select-choices>
+</ui-select>
