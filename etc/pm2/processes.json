@@ -2,7 +2,6 @@
     "apps": [{
         "name"          : "web",
         "script"        : "../../web/app.js",
-        "args"          : ["-u root"],
         "error_file"    : "../../log/web.err.log",
         "out_file"      : "../../log/web.out.log",
         "merge_logs"    : true
