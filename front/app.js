@@ -4,7 +4,7 @@ angular.module('app.services', []);
 angular.module('app.resources', ['ngResource']);
 angular.module('app.templates', []);
 
-angular.module('app', ['ngRoute', 'app.services', 'app.resources', 'app.templates']).
+angular.module('app', ['ngRoute', 'app.services', 'app.resources', 'app.templates', 'ui.select']).
 	config(
 	['$httpProvider',
 	function($httpProvider) {

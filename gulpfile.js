@@ -31,6 +31,7 @@ var config = {
 			'./vendor/angular/angular.js',
 			'./vendor/angular-route/angular-route.js',
 			'./vendor/angular-resource/angular-resource.js',
+			'./vendor/angular-ui-select/dist/select.min.js',
 
 			'./front/app.js',
 			'./front/routes.js',
