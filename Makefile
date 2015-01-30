@@ -1,5 +1,5 @@
 server-down:
-	cd etc/pm2; pm2 stop processes.json
+	cd etc/pm2; pm2 delete processes.json
 
 server-up:
 	cd etc/pm2; pm2 start processes.json
