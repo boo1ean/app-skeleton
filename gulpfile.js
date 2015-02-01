@@ -38,6 +38,7 @@ var config = {
 			'./front/directives/**/*.js',
 			'./front/modules/**/*.js',
 			'./front/services/**/*.js',
+			'./front/filters/**/*.js',
 			'./front/interceptors/**/*.js',
 			'./front/resources/**/*.js',
 
