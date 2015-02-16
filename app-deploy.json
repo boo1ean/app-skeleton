@@ -1,0 +1,16 @@
+{
+	"triggers": {
+		"bower.json"   : "bower install",
+		"package.json" : "npm install",
+
+		"gulpfile.js"  : "gulp build",
+		"front/**"     : "gulp build",
+
+		"database/**"  : "make db-up",
+		"+web"         : "make web-res",
+
+		"config/**"    : "make server-res",
+
+		"**"           : "sleep 2; pm2 status"
+	}
+}
