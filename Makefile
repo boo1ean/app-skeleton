@@ -5,7 +5,10 @@ server-up:
 	cd etc/pm2; pm2 start processes.json
 
 server-res:
-	cd etc/pm2; pm2 restart processes.json
+	cd etc/pm2; pm2 startOrRestart processes.json
+
+web-res:
+	pm2 restart web
 
 db-up:
 	node database/unviews.js
