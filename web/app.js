@@ -11,6 +11,6 @@ var app = express();
 configureMiddlewares(app);
 configureRoutes(app);
 
-app.listen(config.apps.api.port);
+app.listen(config.apps.web.port);
 
-log.info('App started at', config.apps.api.port, 'in', config.env, 'environment');
+log.info('App started at', config.apps.web.port, 'in', config.env, 'environment');

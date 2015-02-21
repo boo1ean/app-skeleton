@@ -1,5 +1,5 @@
 module.exports = {
-	api: {
+	web: {
 		url: 'http://staging.com',
 		port: 3000
 	}
