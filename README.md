@@ -1,21 +1,47 @@
-# Misc
+## Introduction
 
-## Checklist
+This skeleton is a synthesis of accomulated experience of several `php -> node`, .`net -> node` developers.
 
-- [ ] Set server timezone
-- [ ] Set db server timezone
-- [ ] Set server env
-- [ ] Hot alerts on unexpected errors
-- [ ] Check status site (send hot alert when site is down)
-- [ ] Database autobackup to another server
-- [ ] Client-side error logging `window.onerror`
+## Top level overview
 
-**Hot alert** - kind of alert developers could response to immediately e.g. email, sms, skype
+Here are list of top level directories:
 
-## Utils
-
-Rename app
-
-```bash
-find . -type f -regex ".*\.\(js\|html\)" -print0 | xargs -0 sed -i '' -e "s/enode/YOUR_BEST_NAME/g"
 ```
+.
+|-- config
+|-- core
+|-- database
+|-- etc
+|-- framework
+|-- front
+|-- log
+|-- static
+`-- web
+```
+
+### core
+
+Core directory contains all core independed (shared) codebase.
+
+Code is segregated by entities / features / components. Let's call it `components`.
+
+In the below tree, there are 3 `components`: `apps`, `apps/commands` (nested) and `requests`:
+
+```
+core
+|-- apps
+|   |-- commands
+|   |   |-- dal.js
+|   |   `-- index.js
+|   |-- dal.js
+|   |-- index.js
+|   `-- validation.js
+|-- requests
+|   |-- dal.js
+|   `-- index.js
+`-- services
+    |-- crypt.js
+    `-- db.js
+```
+
+`service` directory is responsible for different kind of stuff like db adapters, mailers, cyphers and stuff.
