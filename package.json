@@ -29,6 +29,7 @@
     "gulp-stylus": "^1.0.5",
     "gulp-uglify": "~0.2.1",
     "gulp-uncss": "~0.4.3",
+    "helmet": "^0.6.1",
     "knex": "^0.7.3",
     "lodash": "^3.0.1",
     "pg": "^3.0.3",
