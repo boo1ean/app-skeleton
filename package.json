@@ -11,9 +11,9 @@
   "license": "MIT",
   "dependencies": {
     "app-controller": "^0.3.0",
-    "app-dal": "^0.4.3",
+    "app-dal": "^0.4.4",
     "app-log": "^0.1.3",
-    "app-service": "^0.2.2",
+    "app-service": "^0.3.0",
     "app-validation": "^0.1.1",
     "bcrypt": "^0.8.0",
     "bluebird": "^2.2.2",
