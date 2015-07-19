@@ -23,15 +23,15 @@ var config = {
 
 	js: {
 		src: [
-			'./vendor/lodash/dist/lodash.min.js',
+			'./bower_components/lodash/dist/lodash.min.js',
 
-			'./vendor/jquery/dist/jquery.js',
-			'./vendor/store-js/store.js',
+			'./bower_components/jquery/dist/jquery.js',
+			'./bower_components/store-js/store.js',
 
-			'./vendor/angular/angular.js',
-			'./vendor/angular-route/angular-route.js',
-			'./vendor/angular-resource/angular-resource.js',
-			'./vendor/angular-ui-select/dist/select.min.js',
+			'./bower_components/angular/angular.js',
+			'./bower_components/angular-route/angular-route.js',
+			'./bower_components/angular-resource/angular-resource.js',
+			'./bower_components/angular-ui-select/dist/select.min.js',
 
 			'./front/app.js',
 			'./front/routes.js',
