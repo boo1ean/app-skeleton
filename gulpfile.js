@@ -1,80 +1,36 @@
 var gulp = require('gulp');
-var stylus = require('gulp-stylus');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var plumber = require('gulp-plumber');
-var template_cache = require('gulp-angular-templatecache');
-var run_sequence = require('run-sequence');
+var path = require('path');
+var builders = require('./gulp/builders');
 
-var config = {
-	styles: {
-		src: [
-			'./front/styles/main.styl'
-		],
+var baseBuildPath = __dirname + '/static/build';
+var buildTasks = [];
+var watchTasks = [];
 
-		dist: 'app.css',
-		dest: './static'
-	},
+// See apps/auth/gulp-config for example configuration
+function registerAppTasks (app) {
+	// Generate app-specific build path
+	app.buildPath = path.resolve(baseBuildPath, app.name);
 
-	templates: {
-		src: ['./front/modules/**/*.html', './front/directives/**/*.html'],
-		dest: './front/.template-cache'
-	},
+	// Register app-specific tasks
+	['templates', 'scripts', 'styles', 'build', 'watch'].forEach(registerTask);
 
-	js: {
-		src: [
-			'./bower_components/lodash/dist/lodash.min.js',
+	// Add app build and watch tasks for global build/watch tasks
+	buildTasks.push(app.name + '-build');
+	watchTasks.push(app.name + '-watch');
 
-			'./bower_components/jquery/dist/jquery.js',
-			'./bower_components/store-js/store.js',
-
-			'./bower_components/angular/angular.js',
-			'./bower_components/angular-route/angular-route.js',
-			'./bower_components/angular-resource/angular-resource.js',
-			'./bower_components/angular-ui-select/dist/select.min.js',
-
-			'./front/app.js',
-			'./front/routes.js',
-			'./front/directives/**/*.js',
-			'./front/modules/**/*.js',
-			'./front/services/**/*.js',
-			'./front/filters/**/*.js',
-			'./front/interceptors/**/*.js',
-			'./front/resources/**/*.js',
-
-			'./front/.template-cache/*.js'
-		],
-
-		dist: 'app.js',
-		dest: './static'
+	// Registers app-specific task using task builders
+	function registerTask (task) {
+		var taskName = app.name + '-' + task;
+		gulp.task(taskName, builders[task].bind(null, app));
 	}
-};
+}
 
-gulp.task('styles', function() {
-	return gulp.src(config.styles.src)
-		.pipe(stylus({'include css': true}))
-		.pipe(concat(config.styles.dist))
-		.pipe(gulp.dest(config.styles.dest));
+registerAppTasks(require('./front/gulp-config'));
+
+gulp.task('build', function buildAll () {
+	return gulp.start(buildTasks);
 });
 
-gulp.task('templates', function() {
-	return gulp.src(config.templates.src)
-		.pipe(template_cache({ module: 'app.templates' }))
-		.pipe(gulp.dest(config.templates.dest));
+gulp.task('watch', function watchAll () {
+	return gulp.start(watchTasks);
 });
-
-gulp.task('js', function() {
-	return gulp.src(config.js.src)
-		.pipe(concat(config.js.dist))
-		.pipe(gulp.dest(config.js.dest));
-});
-
-gulp.task('build', function() {
-	return run_sequence(['templates', 'styles'], ['js']);
-});
-
-gulp.task('watch', ['build'], function() {
-	return gulp.watch(['./front/**/*.*'], ['build']);
-});
-
-gulp.task('default', ['watch']);

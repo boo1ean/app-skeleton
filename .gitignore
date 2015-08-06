@@ -1,6 +1,8 @@
 node_modules
+bower_components
 vendor
 static/*.js
 static/*.css
 log/*
 .template-cache
+static/build/*
